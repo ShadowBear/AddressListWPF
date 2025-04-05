@@ -1,0 +1,41 @@
+﻿<Window x:Class="AddressListWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:AddressListWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Search bar -->
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBox x:Name="SearchBox" Controls:TextBoxHelper.Watermark="Aktenzeichen" Width="300" Margin="0,0,10,0"/>
+            <Button Content="Search" Click="Search_Click" Margin="0,0,10,0"/>
+            <Button Content="Add New Address" Click="OpenAddAddress_Click"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Text="Adressliste" FontWeight="Bold" Margin="0,10,0,5"/>
+        <DataGrid Grid.Row="1" x:Name="ResultsGrid" AutoGenerateColumns="True">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding AktuelleAnschrift}" Value="True">
+                            <Setter Property="Foreground" Value="Blue"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+
+        <TextBlock Grid.Row="3" Text="Kontaktinfos" FontWeight="Bold" Margin="0,10,0,5"/>
+        <DataGrid Grid.Row="2" x:Name="ContactResultsGrid" AutoGenerateColumns="True" />
+    </Grid>
+</Window>
