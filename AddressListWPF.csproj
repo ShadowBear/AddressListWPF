@@ -15,4 +15,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="AddressList.Shared">
+      <HintPath>..\AddressList.Shared\bin\Debug\net8.0\AddressList.Shared.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

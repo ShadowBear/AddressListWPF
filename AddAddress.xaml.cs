@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using AddressListWPF.Models;
+using AddressList.Shared.Models;
+using AddressList.Shared.Services;
 using AddressListWPF.Services;
 
 namespace AddressListWPF
@@ -68,7 +69,7 @@ namespace AddressListWPF
                 AddressStatus = AddressStatusBox.Text
             };
 
-            bool success = await _addressService.AddAddressAsync(address);
+            bool success = await _addressService.SaveAddress(address);
             if (success)
             {
                 //Update cached data here to be in sync with the global DB 

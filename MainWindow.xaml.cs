@@ -10,7 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AddressListWPF.Models;
+using AddressList.Shared.Models;
+using AddressList.Shared.Services;
 using AddressListWPF.Services;
 
 namespace AddressListWPF

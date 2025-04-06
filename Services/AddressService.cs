@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using AddressListWPF.Models;
+using AddressList.Shared.Models;
+using AddressList.Shared.Services;
 using System.Net.Http.Json;
 
 namespace AddressListWPF.Services
@@ -29,15 +30,20 @@ namespace AddressListWPF.Services
             return await response.Content.ReadFromJsonAsync<List<Address>>() ?? new List<Address>();
         }
 
-        public async Task<bool> AddAddressAsync(Address address)
+        public async Task<bool> SaveAddress(Address address)
         {
             var json = JsonConvert.SerializeObject(address);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            //var response = await _httpClient.PostAsync("address", content);
+
             var response = await _httpClient.PostAsJsonAsync("address", address, new CancellationToken());
             var errorContent = await response.Content.ReadAsStringAsync();
             Console.WriteLine(errorContent);
             return response.IsSuccessStatusCode;
+        }
+
+         public Task ClearAddressData()
+        {
+            throw new NotImplementedException();
         }
     }
 }
